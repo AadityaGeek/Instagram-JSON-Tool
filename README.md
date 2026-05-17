@@ -1,24 +1,33 @@
 # Instagram GraphQL JSON Extractor
 
-A full-stack web application to extract hidden Instagram GraphQL JSON data from Reels and Posts.
+A full-stack, professional web application to extract hidden Instagram GraphQL JSON data from Reels and Posts. Optimized for both public and private content with automated workflows.
 
 ## Project Structure
 
-```
+```text
 /
-├── frontend/           # Static frontend files (GitHub Pages)
-│   ├── index.html      # UI structure
-│   ├── style.css       # Dark modern styling
-│   └── script.js       # Frontend logic & API calls
+├── index.html          # UI Structure (Root for GitHub Pages)
+├── style.css           # Clean, modern, responsive styling
+├── script.js           # Advanced frontend logic & automation
+├── .gitignore          # Git exclusion rules
 └── backend/            # Python Flask API (Render)
-    ├── app.py          # Flask application logic
+    ├── app.py          # Flask logic with auto doc_id discovery
     ├── requirements.txt # Python dependencies
-    └── Procfile        # Deployment configuration for Render
+    └── Procfile        # Render deployment config
 ```
+
+## Features
+
+- **Automated Public Fetch**: Instant extraction of public Reel/Post data via backend.
+- **Private Post Bridge**: Specialized workflow for private content using your own browser session.
+- **Auto doc_id Discovery**: Backend automatically scrapes the latest Instagram GraphQL IDs to ensure the tool never breaks.
+- **Instant Auto-Copy**: GraphQL links and final JSON are automatically copied to your clipboard.
+- **Cross-Device Ready**: Designed to work seamlessly across PC, Mac, and Mobile.
+- **Direct Media Download**: Automatically extracts and provides high-quality `.mp4` and `.jpg` download buttons.
 
 ## Setup & Local Development
 
-### Backend
+### 1. Backend
 1. Navigate to the `backend` folder:
    ```bash
    cd backend
@@ -31,46 +40,33 @@ A full-stack web application to extract hidden Instagram GraphQL JSON data from 
    ```bash
    python app.py
    ```
-   The backend will be available at `http://localhost:5000`.
+   The API will be available at `http://localhost:5000`.
 
-### Frontend
-1. Open `frontend/index.html` in your browser.
-2. The frontend is configured to automatically detect if it's running on `localhost` and will connect to the local backend.
+### 2. Frontend
+1. Open `index.html` (in the root folder) directly in your browser.
+2. The tool automatically detects if it's running on `localhost` and connects to your local backend.
 
-## Deployment Instructions
+## Deployment Instructions (Free)
 
 ### 1. Backend (Render)
-1. Create a new GitHub repository and push the entire project.
-2. Log in to [Render](https://render.com/).
-3. Create a new **Web Service**.
-4. Connect your GitHub repository.
-5. Set the following configurations:
-   - **Name**: `instagram-json-extractor-backend`
+1. Push your project to a GitHub repository.
+2. Create a new **Web Service** on [Render.com](https://render.com/).
+3. Connect your repository.
+4. Settings:
+   - **Name**: `instagram-json-backend`
    - **Root Directory**: `backend`
    - **Environment**: `Python 3`
    - **Build Command**: `pip install -r requirements.txt`
    - **Start Command**: `gunicorn app:app`
-6. Once deployed, copy the provided URL (e.g., `https://your-app.onrender.com`).
+5. Copy the provided URL (e.g., `https://instagram-json-backend.onrender.com`).
 
-### 2. Frontend (GitHub Pages)
-1. Update the `API_ENDPOINT` in `frontend/script.js` with your Render backend URL:
-   ```javascript
-   const API_ENDPOINT = 'https://your-app.onrender.com/get-data';
-   ```
-2. Go to your GitHub repository **Settings** > **Pages**.
-3. Under **Build and deployment**, select:
-   - **Source**: Deploy from a branch
-   - **Branch**: `main` / `(root)` / `frontend` folder (or just keep everything in the root if preferred, but usually GitHub Pages works best if `index.html` is at the root or you use a specific branch/folder).
-   *Note: If you keep the current structure, you might want to move `frontend` contents to a `gh-pages` branch or use a GitHub Action to deploy the `frontend` folder.*
-
-## Future Upgrades
-- **Video URL Extraction**: Parse the JSON to find the direct `.mp4` link.
-- **Thumbnail Preview**: Display the image/video thumbnail before showing JSON.
-- **Download Button**: Add a button to download the JSON as a `.json` file.
-- **Login Cookie Support**: Allow users to provide their session cookies for private post extraction.
-- **Playwright Automation**: Use headless browsers for more robust extraction if GraphQL IDs change.
-- **API Change Detection**: Implement alerts if Instagram changes their internal API structure.
-- **Dark/Light Mode**: Add a toggle for user preference.
+### 2. Connect & Deploy Frontend (GitHub Pages)
+1. In `script.js`, update `API_ENDPOINT` with your Render URL.
+2. Push the change to GitHub.
+3. Go to Repository **Settings > Pages**.
+4. Select **Branch: main** and **Folder: /(root)**.
+5. Click **Save**. Your tool is now live!
 
 ## Disclaimer
-This tool is for educational purposes only. Please respect Instagram's Terms of Service and use responsibly.
+This tool is for educational and personal use only. Please respect Instagram's Terms of Service and user privacy.
+
