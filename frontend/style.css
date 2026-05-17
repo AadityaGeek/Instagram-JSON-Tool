@@ -1,0 +1,309 @@
+:root {
+    --bg-color: #0f172a;
+    --card-bg: #1e293b;
+    --text-primary: #f8fafc;
+    --text-secondary: #94a3b8;
+    --accent-color: #38bdf8;
+    --accent-hover: #0ea5e9;
+    --error-color: #ef4444;
+    --success-color: #10b981;
+    --border-color: #334155;
+    --private-color: #6366f1;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    line-height: 1.6;
+    display: flex;
+    justify-content: center;
+    padding: 2rem 1rem;
+    min-height: 100vh;
+}
+
+.container {
+    width: 100%;
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+header h1 {
+    font-size: 2.2rem;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(to right, var(--accent-color), #818cf8);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+header p {
+    color: var(--text-secondary);
+}
+
+/* Tabs */
+.mode-selector {
+    display: flex;
+    gap: 0.5rem;
+    padding: 0.3rem;
+    background-color: var(--card-bg);
+    border-radius: 0.75rem;
+    border: 1px solid var(--border-color);
+    margin-top: 1.5rem;
+}
+
+.mode-btn {
+    flex: 1;
+    padding: 0.75rem;
+    background: transparent;
+    color: var(--text-secondary);
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.mode-btn.active {
+    background-color: var(--accent-color);
+    color: var(--bg-color);
+}
+
+.mode-btn:hover:not(.active) {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* Step Cards */
+.step-card {
+    background-color: var(--card-bg);
+    padding: 1.5rem;
+    border-radius: 1rem;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    margin-bottom: 1.5rem;
+}
+
+.step-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+}
+
+.step-number {
+    background-color: var(--accent-color);
+    color: var(--bg-color);
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.85rem;
+}
+
+.step-card h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.step-desc {
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    margin-bottom: 1rem;
+}
+
+/* Inputs & Buttons */
+.input-group {
+    display: flex;
+    gap: 0.5rem;
+    width: 100%;
+}
+
+input[type="text"], textarea {
+    flex: 1;
+    background-color: var(--bg-color);
+    border: 1px solid var(--border-color);
+    border-radius: 0.6rem;
+    padding: 0.75rem 1rem;
+    color: var(--text-primary);
+    font-size: 0.95rem;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+textarea {
+    height: 120px;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.85rem;
+    resize: none;
+}
+
+input:focus, textarea:focus {
+    border-color: var(--accent-color);
+}
+
+.primary-btn {
+    width: 100%;
+    padding: 0.85rem;
+    background-color: var(--accent-color);
+    color: var(--bg-color);
+    border: none;
+    border-radius: 0.6rem;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    margin-top: 1rem;
+}
+
+.primary-btn:hover {
+    background-color: var(--accent-hover);
+    transform: translateY(-1px);
+}
+
+.action-link-btn {
+    display: block;
+    width: 100%;
+    padding: 0.85rem;
+    background-color: var(--private-color);
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 0.6rem;
+    font-weight: 700;
+    transition: background-color 0.2s;
+}
+
+.action-link-btn:hover {
+    background-color: #4f46e5;
+}
+
+.copy-small-btn {
+    padding: 0 1.25rem;
+    background-color: var(--border-color);
+    color: var(--text-primary);
+    border: none;
+    border-radius: 0.6rem;
+    font-weight: 600;
+    font-size: 0.85rem;
+    cursor: pointer;
+}
+
+.copy-small-btn:hover {
+    background-color: #475569;
+}
+
+/* Results */
+.media-container {
+    display: flex;
+    flex-direction: row;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+#media-thumbnail {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 0.75rem;
+    border: 1px solid var(--border-color);
+}
+
+.download-button {
+    display: inline-block;
+    background-color: var(--success-color);
+    color: white;
+    padding: 0.85rem 1.5rem;
+    border-radius: 0.6rem;
+    text-decoration: none;
+    font-weight: 700;
+    margin-top: 0.5rem;
+    transition: transform 0.2s;
+}
+
+.download-button:hover {
+    transform: scale(1.02);
+}
+
+/* JSON Output */
+.output-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.75rem;
+}
+
+pre {
+    background-color: #0a0f1d;
+    padding: 1.25rem;
+    border-radius: 0.75rem;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    max-height: 400px;
+    border: 1px solid var(--border-color);
+    white-space: pre-wrap;
+    word-break: break-all;
+}
+
+/* Misc */
+.loader {
+    width: 30px;
+    height: 30px;
+    border: 3px solid var(--border-color);
+    border-top: 3px solid var(--accent-color);
+    border-radius: 50%;
+    margin: 1rem auto;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin { 100% { transform: rotate(360deg); } }
+
+.notification {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background-color: var(--success-color);
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+    z-index: 1000;
+    transition: all 0.3s;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.hidden { display: none !important; }
+
+footer {
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    margin-top: 2rem;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    header h1 { font-size: 1.8rem; }
+    .media-container { flex-direction: column; text-align: center; }
+    #media-thumbnail { width: 100%; height: 200px; }
+    .notification { left: 1rem; right: 1rem; bottom: 1rem; text-align: center; }
+}

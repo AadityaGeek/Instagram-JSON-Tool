@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram GraphQL JSON Extractor</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts for modern look -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Fira+Code:wght@400&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Instagram GraphQL JSON Extractor</h1>
+            <p>Paste an Instagram Reel or Post URL to extract its internal GraphQL data.</p>
+        </header>
+
+        <main>
+            <!-- Step 1: Input -->
+            <div class="step-card" id="step-1">
+                <div class="step-header">
+                    <span class="step-number">1</span>
+                    <h3>Enter Instagram URL</h3>
+                </div>
+                <div class="input-group">
+                    <input type="text" id="insta-url" placeholder="https://www.instagram.com/reels/CzYm5_yL_2e/" autocomplete="off">
+                </div>
+                
+                <div class="mode-selector">
+                    <button id="public-tab" class="mode-btn active">Public Post</button>
+                    <button id="private-tab" class="mode-btn">Private Post (Manual Code)</button>
+                </div>
+                
+                <div id="public-actions" class="action-area">
+                    <button id="fetch-btn" class="primary-btn">Fetch Data Automatically</button>
+                </div>
+            </div>
+
+            <!-- Step 2: GraphQL Link (For Private/Manual Mode) -->
+            <div class="step-card hidden" id="private-step-2">
+                <div class="step-header">
+                    <span class="step-number">2</span>
+                    <h3>Instagram GraphQL Link</h3>
+                </div>
+                <p class="step-desc">Copy this link or open it in a new tab to see the raw data.</p>
+                <div class="input-group">
+                    <input type="text" id="graphql-url-field" readonly>
+                    <button class="copy-small-btn" data-target="graphql-url-field">Copy</button>
+                </div>
+                <div class="input-group" style="margin-top: 0.75rem;">
+                    <a id="private-data-link" href="#" target="_blank" class="action-link-btn">Open Link in New Tab</a>
+                </div>
+            </div>
+
+            <!-- Step 3: Paste Area (For Private Mode) -->
+            <div class="step-card hidden" id="private-step-3">
+                <div class="step-header">
+                    <span class="step-number">3</span>
+                    <h3>Paste Data Code</h3>
+                </div>
+                <p class="step-desc">Paste the code you copied from Step 2 into the box below:</p>
+                <div class="input-group">
+                    <textarea id="source-paste-area" placeholder="Paste the JSON code here..."></textarea>
+                </div>
+            </div>
+
+            <!-- Result Section -->
+            <div id="loader" class="loader hidden"></div>
+
+            <div class="step-card hidden" id="media-preview-card">
+                <div class="step-header">
+                    <span class="step-number">✓</span>
+                    <h3>Media Result</h3>
+                </div>
+                <div class="media-container">
+                    <img id="media-thumbnail" src="" alt="Thumbnail" class="hidden">
+                    <div class="media-info">
+                        <p id="media-type">Type: Video</p>
+                        <a id="download-btn" href="#" target="_blank" class="download-button">Download Media Now</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Debug JSON -->
+            <div class="step-card hidden" id="step-4">
+                <div class="step-header">
+                    <span class="step-number">4</span>
+                    <h3>Raw GraphQL JSON</h3>
+                </div>
+                <div class="output-header">
+                    <span>Formatted Response</span>
+                    <button id="copy-btn" class="copy-small-btn">Copy JSON</button>
+                </div>
+                <pre id="json-output"></pre>
+            </div>
+        </main>
+
+        <footer>
+            <p>&copy; 2026 Instagram JSON Tool. For educational purposes only.</p>
+        </footer>
+    </div>
+
+    <!-- Notification system -->
+    <div id="notification" class="notification hidden"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
